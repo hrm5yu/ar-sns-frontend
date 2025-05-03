@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ApiService {
-  final String baseUrl = 'https://shielded-plateau-65128-36001a8690eb.herokuapp.com/';
+  final String baseUrl = 'https://shielded-plateau-65128-36001a8690eb.herokuapp.com';
 
   Future<http.Response> getProfile() async {
     final user = FirebaseAuth.instance.currentUser;
