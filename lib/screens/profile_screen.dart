@@ -35,7 +35,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('プロフィール')),
+      appBar: AppBar(
+        title: Text('プロフィール'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () async {
+              Navigator.pop(context);
+            }
+          )
+          ]),
       body: Center(
         child: _error != null
             ? Text('エラー: $_error')

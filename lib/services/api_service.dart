@@ -25,4 +25,29 @@ class ApiService {
 
     return response;
   }
+
+  Future<void> createPost(String text) async {
+  final user = FirebaseAuth.instance.currentUser;
+  if (user == null) throw Exception('未ログイン');
+  final idToken = await user.getIdToken();
+
+  final response = await http.post(
+    Uri.parse('$baseUrl/posts'),
+    headers: {
+      'Authorization': 'Bearer $idToken',
+      'Content-Type': 'application/json',
+    },
+    body: jsonEncode({
+      'latitude': 1,
+      'longitude': 1,
+      'text': text
+      }),
+  );
+
+  if (response.statusCode != 201) {
+    throw Exception('投稿に失敗: ${response.body}');
+  }
 }
+
+}
+
