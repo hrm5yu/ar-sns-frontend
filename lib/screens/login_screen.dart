@@ -1,6 +1,6 @@
+import 'package:ar_sns_frontend/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
-import 'profile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   await authService.signIn(emailController.text, passwordController.text);
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => ProfileScreen()),
+                    MaterialPageRoute(builder: (_) => HomeScreen()),
                   );
                 } catch (e) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('ログイン失敗: $e')));
